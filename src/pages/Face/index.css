@@ -1,0 +1,7 @@
+canvas.cameraCanvas {
+  display: inline-block;
+  margin: auto;
+  width: 1280px;
+  height: 720px;
+  z-index: 2;
+}

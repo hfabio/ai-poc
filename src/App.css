@@ -1,0 +1,30 @@
+#root {
+  > header {
+    display: inline-block;
+    width: 100%;
+
+    > ul {
+      width: 100%;
+      padding: 2vh 0;
+      display: inline-flex;
+      flex-direction: row;
+      justify-content: space-around;
+
+      >li {
+        padding: 16px 8px;
+        border-radius: 16px;
+      }
+
+      > li:hover {
+        font-size: 16px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  > section {
+    width: 100%;
+    height: calc(100% - calc(4vh + 52px));
+    position: relative;
+  }
+}

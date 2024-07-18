@@ -1,0 +1,19 @@
+canvas.cameraCanvas {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+canvas.handsCanvas {
+  display: block;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.7;
+}
