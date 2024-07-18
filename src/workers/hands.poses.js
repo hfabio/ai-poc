@@ -1,9 +1,9 @@
 const { GestureDescription, Finger, FingerCurl } = self.fp;
 
-const ScrollDownGesture = new GestureDescription("scroll-down"); // ✊️
-const ScrollUpGesture = new GestureDescription("scroll-up"); // 🖐
-const RockGesture = new GestureDescription("rock-and-roll"); // 🤟
-const ClickGesture = new GestureDescription("click"); // 🤏
+const ScrollDownGesture = new GestureDescription('scroll-down'); // ✊️
+const ScrollUpGesture = new GestureDescription('scroll-up'); // 🖐
+const RockGesture = new GestureDescription('rock-and-roll'); // 🤟
+const ClickGesture = new GestureDescription('click'); // 🤏
 
 // scroll-down
 // -----------------------------------------------------------------------------
@@ -75,10 +75,10 @@ const knownGestures = [
 ];
 
 const gestureStrings = {
-  "scroll-up": "🖐",
-  "scroll-down": "✊️",
-  click: "🤏",
-  "rock-and-roll": "🤟",
+  'scroll-up': '🖐',
+  'scroll-down': '✊️',
+  click: '🤏',
+  'rock-and-roll': '🤟',
 };
 
 const fingerLookupIndexes = {

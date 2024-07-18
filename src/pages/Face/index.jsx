@@ -1,7 +1,7 @@
-import { useRef, useEffect, useState, useCallback } from "react";
-import "./index.css";
-import FaceWorker from "../../workers/face?worker"
-import Camera from "../../utils/camera.js";
+import { useRef, useEffect, useState, useCallback } from 'react';
+import './index.css';
+import FaceWorker from '../../workers/face?worker'
+import Camera from '../../utils/camera.js';
 const camera = await Camera.init();
 const worker = new FaceWorker();
 
@@ -26,7 +26,7 @@ const Face = () => {
     console.log('worker configured');
     worker.onmessage = ({ data }) => {
       console.log('recebeu post message', data)
-      if ("MODEL READY" === data) return setIsReady(true);
+      if ('MODEL READY' === data) return setIsReady(true);
       const {blinked, left, right} = data;
       if (blinked) return setBlinkCounter((counter) => counter + 1);
       if (left) console.log('left eye dispatched from component');

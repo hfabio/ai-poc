@@ -1,9 +1,9 @@
-import { useRef, useEffect, useState, useCallback } from "react";
-import "./index.css";
-import HandsWorker from "../../workers/hands?worker"
-import Camera from "../../utils/camera.js";
+import { useRef, useEffect, useState, useCallback } from 'react';
+import './index.css';
+import HandsWorker from '../../workers/hands?worker'
+import Camera from '../../utils/camera.js';
 const camera = await Camera.init();
-const worker = new HandsWorker({type: "classic", name: "hands"});
+const worker = new HandsWorker({type: 'classic', name: 'hands'});
 
 const Hands = () => {
   const handCanvasRef = useRef(null);
@@ -26,7 +26,7 @@ const Hands = () => {
     console.log('worker configured', worker);
     worker.onmessage = ({ data }) => {
       console.log('recebeu post message', data)
-      if ("MODEL READY" === data) return setIsReady(true);
+      if ('MODEL READY' === data) return setIsReady(true);
       console.log({data})
     };
   }, [setIsReady])
@@ -60,9 +60,9 @@ const Hands = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       const ctx = canvas.getContext('2d');
-      ctx.fillStyle = "black";
+      ctx.fillStyle = 'black';
       ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
-      console.log("render");
+      console.log('render');
     }
   }, [handCanvasRef])
 

@@ -1,4 +1,4 @@
-import { prepareRunChecker } from "../utils/utils";
+import { prepareRunChecker } from '../utils/utils';
 
 const { shouldRun: scrollShouldRun } = prepareRunChecker({ timerDelay: 200 });
 const { shouldRun: clickShouldRun } = prepareRunChecker({ timerDelay: 1000 });
@@ -7,7 +7,7 @@ export default class HandGestureController {
   #service;
   #camera;
   #lastDirection = {
-    direction: "",
+    direction: '',
     y: 0,
   };
   constructor({ view, service, camera }) {
@@ -27,14 +27,14 @@ export default class HandGestureController {
     const maxTop = 0;
     const maxBottom = window.innerHeight * 3;
     const shouldLockScrollDown =
-      direction === "scroll-down" &&
+      direction === 'scroll-down' &&
       this.#lastDirection.y + scrollSpeed > maxBottom;
     const shouldLockScrollTop =
-      direction === "scroll-up" && this.#lastDirection.y - scrollSpeed < maxTop;
+      direction === 'scroll-up' && this.#lastDirection.y - scrollSpeed < maxTop;
     if (this.#lastDirection.direction === direction) {
       if (shouldLockScrollTop || shouldLockScrollDown) return;
       this.#lastDirection.y +=
-        direction === "scroll-down" ? scrollSpeed : scrollSpeed * -1;
+        direction === 'scroll-down' ? scrollSpeed : scrollSpeed * -1;
     } else {
       this.#lastDirection.direction = direction;
     }
@@ -47,18 +47,18 @@ export default class HandGestureController {
       this.#view.clearCanvas();
       if (hands?.length) this.#view.drawHands(hands);
       for await (const { event, x, y } of this.#service.detectGestures(hands)) {
-        if (event.includes("scroll")) {
+        if (event.includes('scroll')) {
           if (!scrollShouldRun()) continue;
           this.#scrollPage(event);
         }
-        if (event.includes("click")) {
+        if (event.includes('click')) {
           if (!clickShouldRun()) continue;
           this.#view.clickOnElement(x, y);
         }
       }
       return hands;
     } catch (error) {
-      console.log("something went wrong", { error });
+      console.log('something went wrong', { error });
       return 0;
     }
   }

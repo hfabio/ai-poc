@@ -1,4 +1,4 @@
-import { prepareRunChecker } from "../utils/runChecker";
+import { prepareRunChecker } from '../utils/runChecker';
 // Calculate the position of eyelid to predict a blink
 const getEuclideanDistance = (x1, y1, x2, y2) =>
   Math.sqrt(
@@ -41,7 +41,7 @@ export const hasBlinked = async ({ model, video }) => {
     const blinked = leftEAR <= EAR_THRESHOLD && rightEAR <= EAR_THRESHOLD;
     const [left, right] = [leftEAR <= EAR_THRESHOLD, rightEAR <= EAR_THRESHOLD];
     if (!blinked && (left || right))
-      console.log(`Piscou o olho ${left ? "esquerdo" : "direito"}`);
+      console.log(`Piscou o olho ${left ? 'esquerdo' : 'direito'}`);
     if (shouldRun()) continue;
     return {blinked, left, right};
   }

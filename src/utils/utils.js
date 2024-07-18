@@ -1,6 +1,6 @@
 /* eslint-disable getter-return */
 /* eslint-disable no-unsafe-finally */
-import { knownGestures, gestureStrings } from "./gesture";
+import { knownGestures, gestureStrings } from './gesture';
 
 function supportsWorkerType() {
   let supports = false;
@@ -11,7 +11,7 @@ function supportsWorkerType() {
   };
   try {
     // tenta criar um worker em background checando se tem acesso a propriedade de tipo (só suportada quando tem o tipo módulo tb)
-    new Worker("blob://", tester).terminate();
+    new Worker('blob://', tester).terminate();
   } finally {
     return supports;
   }

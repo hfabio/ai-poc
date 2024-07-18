@@ -19,7 +19,7 @@ const detectGestures = async ({predictions, gestureEstimator}) => {
       previous.score > current.score ? previous : current
     );
     const { x, y } = hand.keypoints.find(
-      ({ name }) => name === "index_finger_tip"
+      ({ name }) => name === 'index_finger_tip'
     );
 
     events.push({ event: result.name, x, y });

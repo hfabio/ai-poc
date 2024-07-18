@@ -1,5 +1,5 @@
 export const CameraErrorMessages = {
-  notAvailable: "Browser API navigator.mediaDevices.getUserMedia not available",
+  notAvailable: 'Browser API navigator.mediaDevices.getUserMedia not available',
 };
 
 export const videoConfig = {
@@ -15,13 +15,13 @@ export const videoConfig = {
 
 export default class Camera {
   constructor() {
-    this.video = document.createElement("video");
+    this.video = document.createElement('video');
   }
 
   static async init() {
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia)
+    if (!navigator?.mediaDevices?.getUserMedia)
       throw new Error(CameraErrorMessages.notAvailable);
-    
+
     const stream = await navigator.mediaDevices.getUserMedia(videoConfig);
     const camera = new Camera();
     camera.video.srcObject = stream;
@@ -36,7 +36,7 @@ export default class Camera {
     });
 
     camera.video.play();
-    console.log('camera loaded')
+    console.log('camera loaded');
     return camera;
   }
 }

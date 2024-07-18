@@ -1,10 +1,10 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import "./index.css";
+import { useEffect, useMemo, useRef, useState } from 'react';
+import './index.css';
 
 const parseTextResponse = text => {
   try {
     const parsed = JSON.parse(text);
-    if(typeof parsed === "string") return {from: 'system', message: parsed};
+    if(typeof parsed === 'string') return {from: 'system', message: parsed};
     if(Array.isArray(parsed)) return parsed[0];
     return parsed;
   } catch (error) {
@@ -13,30 +13,18 @@ const parseTextResponse = text => {
       return {from: 'system', message: text};
     }
     console.log({error, text});
-    return {from: 'system', message: "sorry, something went wrong. Please try again"}
+    return {from: 'system', message: 'sorry, something went wrong. Please try again'}
   }
 }
 
 const Llm = () => {
-  // const [context, setContext] = useState([
-  //   {from: 'user', message: 'How far is the moon?'},
-  //   {from: 'system', message: "The Moon is about 238,900 miles (384,400 kilometers) away from Earth on average. This distance varies slightly depending on the specific location in the Moon's orbit, which is elliptical in shape."},
-  //   {from: 'user', message: 'how long it takes to get there?'},
-  // ]);
   const [context, setContext] = useState([]);
-    // Array(50)
-    //   .fill([
-    //     { from: "system", message: "olá user, from system" },
-    //     { from: "user", message: "olá mundo" },
-    //   ])
-    //   .flat()
-  // );
-  const [prompt, setPrompt] = useState("");
+  const [prompt, setPrompt] = useState('');
   const bodyRef = useRef(null)
   const sessionRef = useRef(null);
 
   const process = useMemo(() => async () => {
-    if(!sessionRef.current) alert("AI not found in window!");
+    if(!sessionRef.current) alert('AI not found in window!');
     if (!context.length) return console.log('empty context');
     console.log({context})
     let localPrompt = context?.[0]?.message;
@@ -66,7 +54,7 @@ const Llm = () => {
     e.preventDefault();
     if (!prompt) return;
     setContext((prevState) => ([...prevState, {from: 'user', message: prompt}]));
-    setPrompt("");
+    setPrompt('');
   };
 
   useEffect(() => {
