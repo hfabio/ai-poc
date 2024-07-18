@@ -10,7 +10,7 @@ import {
 } from '../utils/utils.js';
 
 import Camera from '../utils/camera.js';
-const camera = await Camera.init();
+const camera = Camera.init();
 
 const fingerPose = window.fp;
 const handPoseDetection = window.handPoseDetection;

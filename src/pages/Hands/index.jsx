@@ -2,7 +2,7 @@ import { useRef, useEffect, useState, useCallback } from 'react';
 import './index.css';
 import HandsWorker from '../../workers/hands?worker'
 import Camera from '../../utils/camera.js';
-const camera = await Camera.init();
+const camera = Camera.init();
 const worker = new HandsWorker({type: 'classic', name: 'hands'});
 
 const Hands = () => {

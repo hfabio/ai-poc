@@ -7,18 +7,20 @@ import {hasBlinked} from './face.utils';
 const { tf, faceLandmarksDetection } = self;
 tf.setBackend('webgl');
 
+const main = async () => {
+  console.log('loading face tf model');
+  const model = await faceLandmarksDetection.load(
+    faceLandmarksDetection.SupportedPackages.mediapipeFacemesh,
+    { maxFaces: 1 }
+  );
+  console.log('face tf model loaded');
 
-console.log('loading face tf model');
-const model = await faceLandmarksDetection.load(
-  faceLandmarksDetection.SupportedPackages.mediapipeFacemesh,
-  { maxFaces: 1 }
-);
-console.log('face tf model loaded');
+  postMessage('MODEL READY');
 
-postMessage('MODEL READY');
-
-onmessage = async ({ data: video }) => {
-  const blinked = await hasBlinked({video, model});
-  if (!blinked?.blinked && !blinked?.left && !blinked?.right) return;
-  postMessage(blinked);
-};
+  onmessage = async ({ data: video }) => {
+    const blinked = await hasBlinked({video, model});
+    if (!blinked?.blinked && !blinked?.left && !blinked?.right) return;
+    postMessage(blinked);
+  };
+}
+main()

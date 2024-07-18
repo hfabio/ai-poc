@@ -21,29 +21,33 @@ const detectorConfig = {
   // maxHands: 2,
 };
 
-console.log('loading hands tf model');
-try {
-  const detector = await handPoseDetection.createDetector(
-    model,
-    detectorConfig
-  );
-  const estimator = new fingerPose.GestureEstimator(knownGestures);
-  console.log('hands tf model loaded');
+const main = async () => {
+  console.log('loading hands tf model');
+  try {
+    const detector = await handPoseDetection.createDetector(
+      model,
+      detectorConfig
+    );
+    const estimator = new fingerPose.GestureEstimator(knownGestures);
+    console.log('hands tf model loaded');
 
-  postMessage('MODEL READY');
+    postMessage('MODEL READY');
 
-  onmessage = async ({ data: video }) => {
-    const hands = await estimateHands({
-      video,
-      detector,
-      estimator,
-      fingerPose,
-    });
-    if (!hands?.gestures?.length && !hands?.gestures?.length) return;
-    postMessage(hands);
-  };
-} catch (error) {
-  console.log('error on worker', error);
-  postMessage({ error });
-  throw error;
+    onmessage = async ({ data: video }) => {
+      const hands = await estimateHands({
+        video,
+        detector,
+        estimator,
+        fingerPose,
+      });
+      if (!hands?.gestures?.length && !hands?.gestures?.length) return;
+      postMessage(hands);
+    };
+  } catch (error) {
+    console.log('error on worker', error);
+    postMessage({ error });
+    throw error;
+  }
 }
+
+main()
