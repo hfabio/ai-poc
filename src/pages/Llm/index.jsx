@@ -41,7 +41,7 @@ const Llm = () => {
   }, [context, sessionRef, setContext]);
 
   const createSession = async () => {
-    const session = await window.ai?.createTextSession();
+    const session = await window?.ai?.languageModel?.create?.();
     sessionRef.current = session;
   }
 
